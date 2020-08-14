@@ -20,6 +20,7 @@ import {
     IAttributeMetadataObject,
     newAttributeMetadataObject,
     isIdentifierRef,
+    newAnalyticalDashboardMetadataObject,
 } from "@gooddata/sdk-model";
 import { TigerAuthenticatedCallGuard } from "../../../types";
 import { tokenizeExpression, IExpressionToken } from "./measureExpressionTokens";
@@ -61,6 +62,18 @@ export class TigerWorkspaceMetadata implements IWorkspaceMetadata {
         return newDataSetMetadataObject(idRef("dummyDataset"), (m) =>
             m.id("dummyDataset").uri("/dummy/dataset").title("Dummy dataset").description(""),
         );
+    }
+
+    public async getAnalyticalDashboardMeta(_ref: ObjRef): Promise<IMetadataObject[]> {
+        return [
+            newAnalyticalDashboardMetadataObject(idRef("dummyAnalyticalDashboard"), (m) =>
+                m
+                    .id("dummyAnalyticalDashboard")
+                    .uri("/dummy/analyticalDashboard")
+                    .title("Dummy analytical dashboard")
+                    .description(""),
+            ),
+        ];
     }
 
     private resolveToken(

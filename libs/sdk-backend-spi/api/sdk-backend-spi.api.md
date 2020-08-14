@@ -1130,6 +1130,7 @@ export interface IWorkspaceInsights {
 
 // @public
 export interface IWorkspaceMetadata {
+    getAnalyticalDashboardMeta(ref: ObjRef): Promise<IMetadataObject[]>;
     getAttribute(ref: ObjRef): Promise<IAttributeMetadataObject>;
     getAttributeDisplayForm(ref: ObjRef): Promise<IAttributeDisplayFormMetadataObject>;
     getFactDatasetMeta(ref: ObjRef): Promise<IMetadataObject>;

@@ -73,7 +73,12 @@ export class RecordedMetadata implements IWorkspaceMetadata {
     public getMeasureExpressionTokens(_: ObjRef): Promise<IMeasureExpressionToken[]> {
         throw new NotSupported("not supported");
     }
+
     public getFactDatasetMeta(_: ObjRef): Promise<IMetadataObject> {
+        throw new NotSupported("not supported");
+    }
+
+    public getAnalyticalDashboardMeta(_: ObjRef): Promise<IMetadataObject[]> {
         throw new NotSupported("not supported");
     }
 }
