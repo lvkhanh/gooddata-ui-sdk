@@ -40,11 +40,4 @@ export interface IWorkspaceMetadata {
      * @returns promise of attribute metadata object
      */
     getAttribute(ref: ObjRef): Promise<IAttributeMetadataObject>;
-
-    /**
-     * Get information about the given analyticalDashboard
-     * @param ref - ref of the insight
-     * @returns promise list of metadata object
-     */
-    getAnalyticalDashboardMeta(ref: ObjRef): Promise<IMetadataObject[]>;
 }

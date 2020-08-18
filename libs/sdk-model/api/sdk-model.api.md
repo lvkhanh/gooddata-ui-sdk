@@ -8,10 +8,6 @@
 export function absoluteDateFilterValues(filter: IAbsoluteDateFilter): IAbsoluteDateFilterValues;
 
 // @public
-export class AnalyticalDashboardMetadataObjectBuilder<T extends IAnalyticalDashboardMetadataObject = IAnalyticalDashboardMetadataObject> extends MetadataObjectBuilder<T> {
-}
-
-// @public
 export const anyAttribute: AttributePredicate;
 
 // @public
@@ -403,12 +399,6 @@ export interface IAbsoluteDateFilterValues {
     from: string;
     // (undocumented)
     to: string;
-}
-
-// @public
-export interface IAnalyticalDashboardMetadataObject extends IMetadataObject {
-    // (undocumented)
-    type: "analyticalDashboard";
 }
 
 // @public
@@ -1398,7 +1388,7 @@ export function measureValueFilterMeasure(filter: IMeasureValueFilter): ObjRefIn
 export function measureValueFilterOperator(filter: IMeasureValueFilter): ComparisonConditionOperator | RangeConditionOperator | undefined;
 
 // @public
-export type MetadataObject = IAttributeMetadataObject | IAttributeDisplayFormMetadataObject | IFactMetadataObject | IMeasureMetadataObject | IDataSetMetadataObject | IVariableMetadataObject | IAnalyticalDashboardMetadataObject;
+export type MetadataObject = IAttributeMetadataObject | IAttributeDisplayFormMetadataObject | IFactMetadataObject | IMeasureMetadataObject | IDataSetMetadataObject | IVariableMetadataObject;
 
 // @public
 export class MetadataObjectBuilder<T extends IMetadataObject = IMetadataObject> extends Builder<T> implements IMetadataObjectBuilder {
@@ -1435,9 +1425,6 @@ export function modifySimpleMeasure(measure: IMeasure<IMeasureDefinition>, modif
 
 // @public
 export function newAbsoluteDateFilter(dateDataSet: ObjRef | Identifier, from: string, to: string): IAbsoluteDateFilter;
-
-// @public
-export const newAnalyticalDashboardMetadataObject: (ref: ObjRef, modifications?: BuilderModifications<AnalyticalDashboardMetadataObjectBuilder>) => IAnalyticalDashboardMetadataObject;
 
 // @public
 export function newArithmeticMeasure(measuresOrIds: ReadonlyArray<MeasureOrLocalId>, operator: ArithmeticMeasureOperator, modifications?: MeasureModifications<ArithmeticMeasureBuilder>): IMeasure<IArithmeticMeasureDefinition>;
@@ -1542,7 +1529,7 @@ export function newTwoDimensional(dim1Input: DimensionItem[], dim2Input: Dimensi
 export const newVariableMetadataObject: (ref: ObjRef, modifications?: BuilderModifications<VariableMetadataObjectBuilder>) => IVariableMetadataObject;
 
 // @public
-export type ObjectType = "measure" | "fact" | "attribute" | "displayForm" | "dataSet" | "tag" | "insight" | "variable" | "analyticalDashboard";
+export type ObjectType = "measure" | "fact" | "attribute" | "displayForm" | "dataSet" | "tag" | "insight" | "variable";
 
 // @public
 export type ObjRef = UriRef | IdentifierRef;

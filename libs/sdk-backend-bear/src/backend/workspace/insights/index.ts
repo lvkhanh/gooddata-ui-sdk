@@ -10,7 +10,7 @@ import {
     IWorkspaceInsights,
     SupportedInsightReferenceTypes,
 } from "@gooddata/sdk-backend-spi";
-import { GdcVisualizationClass, GdcVisualizationObject } from "@gooddata/api-model-bear";
+import { GdcVisualizationClass, GdcVisualizationObject, GdcMetadata } from "@gooddata/api-model-bear";
 import {
     IInsight,
     IInsightDefinition,
@@ -18,13 +18,15 @@ import {
     insightVisualizationUrl,
     IVisualizationClass,
     ObjRef,
+    IMetadataObject,
 } from "@gooddata/sdk-model";
 import { convertVisualizationClass } from "../../../convertors/fromBackend/VisualizationClassConverter";
 import { convertVisualization } from "../../../convertors/fromBackend/VisualizationConverter";
 import { convertInsight, convertInsightDefinition } from "../../../convertors/toBackend/InsightConverter";
-import { objRefToUri } from "../../../utils/api";
+import { objRefToUri, getObjectIdFromUri } from "../../../utils/api";
 import { BearAuthenticatedCallGuard } from "../../../types/auth";
 import { InsightReferencesQuery } from "./insightReferences";
+import { convertMetadataObjectXrefEntry } from "../../../convertors/fromBackend/MetaConverter";
 
 export class BearWorkspaceInsights implements IWorkspaceInsights {
     constructor(private readonly authCall: BearAuthenticatedCallGuard, public readonly workspace: string) {}
@@ -199,4 +201,18 @@ export class BearWorkspaceInsights implements IWorkspaceInsights {
 
         return withFixedVisClass;
     }
+
+    public getObjectsReferencing = async (ref: ObjRef): Promise<IInsightReferences> => {
+        const uri = await objRefToUri(ref, this.workspace, this.authCall);
+        const objectId = getObjectIdFromUri(uri);
+        return this.authCall(async (sdk) => {
+            const usedBy = await sdk.xhr.getParsed<{ entries: GdcMetadata.IObjectXrefEntry[] }>(
+                `/gdc/md/${this.workspace}/usedby2/${objectId}?types=analyticalDashboard`,
+            );
+
+            return usedBy.entries.map((entry: GdcMetadata.IObjectXrefEntry) =>
+                convertMetadataObjectXrefEntry("analyticalDashboard", entry),
+            );
+        });
+    };
 }

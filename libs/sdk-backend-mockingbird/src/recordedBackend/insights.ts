@@ -153,6 +153,10 @@ export class RecordedInsights implements IWorkspaceInsights {
 
         return result;
     }
+
+    public getObjectsReferencing = async (_ref: ObjRef): Promise<IInsightReferences> => {
+        return {};
+    };
 }
 
 type Comparator = (a: IInsight, b: IInsight) => number;

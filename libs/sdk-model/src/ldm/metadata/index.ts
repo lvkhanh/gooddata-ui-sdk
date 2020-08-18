@@ -8,7 +8,6 @@ import { IFactMetadataObject } from "./fact";
 import { IMeasureMetadataObject } from "./measure";
 import { IDataSetMetadataObject } from "./dataSet";
 import { IVariableMetadataObject } from "./variable";
-import { IAnalyticalDashboardMetadataObject } from "./analyticalDashboard";
 
 export { AttributeMetadataObjectBuilder, newAttributeMetadataObject } from "./attribute/factory";
 export {
@@ -19,10 +18,6 @@ export { FactMetadataObjectBuilder, newFactMetadataObject } from "./fact/factory
 export { MeasureMetadataObjectBuilder, newMeasureMetadataObject } from "./measure/factory";
 export { DataSetMetadataObjectBuilder, newDataSetMetadataObject } from "./dataSet/factory";
 export { VariableMetadataObjectBuilder, newVariableMetadataObject } from "./variable/factory";
-export {
-    AnalyticalDashboardMetadataObjectBuilder,
-    newAnalyticalDashboardMetadataObject,
-} from "./analyticalDashboard/factory";
 
 export {
     IMetadataObject,
@@ -32,7 +27,6 @@ export {
     IMeasureMetadataObject,
     IDataSetMetadataObject,
     IVariableMetadataObject,
-    IAnalyticalDashboardMetadataObject,
 };
 
 /**
@@ -46,8 +40,7 @@ export type MetadataObject =
     | IFactMetadataObject
     | IMeasureMetadataObject
     | IDataSetMetadataObject
-    | IVariableMetadataObject
-    | IAnalyticalDashboardMetadataObject;
+    | IVariableMetadataObject;
 
 /**
  * Get metadata object identifier

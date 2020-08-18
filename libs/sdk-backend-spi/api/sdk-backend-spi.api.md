@@ -586,6 +586,7 @@ export type IInsightQueryResult = IPagedResource<IInsight>;
 export interface IInsightReferences {
     catalogItems?: CatalogItem[];
     dataSetMeta?: IMetadataObject[];
+    analyticalDashboards?: IMetadataObject[];
 }
 
 // @alpha
@@ -1126,11 +1127,11 @@ export interface IWorkspaceInsights {
     getVisualizationClass(ref: ObjRef): Promise<IVisualizationClass>;
     getVisualizationClasses(): Promise<IVisualizationClass[]>;
     updateInsight(insight: IInsight): Promise<IInsight>;
+    getObjectsReferencing(ref: ObjRef): Promise<IInsightReferences>;
 }
 
 // @public
 export interface IWorkspaceMetadata {
-    getAnalyticalDashboardMeta(ref: ObjRef): Promise<IMetadataObject[]>;
     getAttribute(ref: ObjRef): Promise<IAttributeMetadataObject>;
     getAttributeDisplayForm(ref: ObjRef): Promise<IAttributeDisplayFormMetadataObject>;
     getFactDatasetMeta(ref: ObjRef): Promise<IMetadataObject>;

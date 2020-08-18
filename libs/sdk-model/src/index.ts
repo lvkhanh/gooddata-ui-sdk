@@ -358,7 +358,6 @@ export {
     DataSetMetadataObjectBuilder,
     VariableMetadataObjectBuilder,
     FactMetadataObjectBuilder,
-    AnalyticalDashboardMetadataObjectBuilder,
     IAttributeDisplayFormMetadataObject,
     IAttributeMetadataObject,
     IDataSetMetadataObject,
@@ -366,7 +365,6 @@ export {
     IFactMetadataObject,
     IMeasureMetadataObject,
     IMetadataObject,
-    IAnalyticalDashboardMetadataObject,
     MeasureMetadataObjectBuilder,
     MetadataObject,
     MetadataObjectBuilder,
@@ -378,7 +376,6 @@ export {
     newDataSetMetadataObject,
     newVariableMetadataObject,
     metadataObjectId,
-    newAnalyticalDashboardMetadataObject,
 } from "./ldm/metadata";
 
 export {

@@ -209,4 +209,8 @@ export class TigerWorkspaceInsights implements IWorkspaceInsights {
     ): Promise<IInsightReferences> => {
         return Promise.resolve({});
     };
+
+    public getObjectsReferencing = async (_ref: ObjRef): Promise<IInsightReferences> => {
+        return Promise.resolve({});
+    };
 }

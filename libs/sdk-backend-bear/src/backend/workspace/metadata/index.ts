@@ -204,18 +204,4 @@ export class BearWorkspaceMetadata implements IWorkspaceMetadata {
             return convertMetadataObjectXrefEntry("dataSet", usedBy.entries[0]);
         });
     }
-
-    public async getAnalyticalDashboardMeta(ref: ObjRef): Promise<IMetadataObject[]> {
-        const uri = await objRefToUri(ref, this.workspace, this.authCall);
-        const objectId = getObjectIdFromUri(uri);
-        return this.authCall(async (sdk) => {
-            const usedBy = await sdk.xhr.getParsed<{ entries: GdcMetadata.IObjectXrefEntry[] }>(
-                `/gdc/md/${this.workspace}/usedby2/${objectId}?types=analyticalDashboard`,
-            );
-
-            return usedBy.entries.map((entry: GdcMetadata.IObjectXrefEntry) =>
-                convertMetadataObjectXrefEntry("analyticalDashboard", entry),
-            );
-        });
-    }
 }
